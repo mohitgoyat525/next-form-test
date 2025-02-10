@@ -5,6 +5,7 @@ import ImageUpload from "../dashboard/ImgUpload";
 import { DASHBOARD_BUTTON_LIST } from "../../utils/Helper";
 import Link from "next/link";
 import Calenderly from "./Calendly";
+import Value from "./Value";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -12,7 +13,6 @@ const Dashboard = () => {
 
   const [page, setPage] = useState<string | null>(null);
 
-  // UseEffect to handle search params on the client side
   useEffect(() => {
     const pageParam = searchParams.get("page");
     setPage(pageParam);
@@ -78,7 +78,6 @@ const Dashboard = () => {
           <h1 className="text-white font-semibold font-inter text-3xl">
             Welcome to Dashboard
           </h1>
-          {/* Button to toggle sidebar on small screens */}
           <button
             onClick={toggleSidebar}
             className="md:hidden text-white absolute top-6 left-6 p-2 bg-black rounded-md z-[60]"
@@ -87,9 +86,8 @@ const Dashboard = () => {
           </button>
         </div>
 
-        {/* Render content based on the page */}
         {page === "values" ? (
-          <p>First page</p>
+         <Value/>
         ) : page === "calenderly" ? (
           <Calenderly />
         ) : page === "images" ? (

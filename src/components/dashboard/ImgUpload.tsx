@@ -2,22 +2,22 @@
 import { useState } from "react";
 
 const UploadImage = () => {
-  const [uploadImgs, setUploadImgs] = useState<string[]>([]);
-  const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const newImages = Array.from(e.target.files).map((file) =>
+  const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const newImageURLs = Array.from(event.target.files).map((file) =>
         URL.createObjectURL(file)
       );
-      setUploadImgs((prevImgs) => [...prevImgs, ...newImages]);
+      setUploadedImages((prevImages) => [...prevImages, ...newImageURLs]);
     }
   };
-  const removeHandler = () => {
-    setUploadImgs([]);
-    const fileInput = document.getElementById("upload") as HTMLInputElement;
+  const clearAllImages = () => {
+    setUploadedImages([]); 
+    const fileInput = document.getElementById("file-input") as HTMLInputElement;
     if (fileInput) fileInput.value = "";
   };
   const removeImage = (index: number) => {
-    setUploadImgs((prevImgs) => prevImgs.filter((_, i) => i !== index));
+    setUploadedImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
   return (
@@ -30,23 +30,22 @@ const UploadImage = () => {
         <div className="relative">
           <input
             type="file"
-            id="upload"
+            id="file-input"
             hidden
             multiple
-            onChange={(e) => handlerChange(e)}
+            onChange={handleImageChange}
           />
           <label
-            htmlFor="upload"
-            className={`px-6 py-4 border-2 border-dashed border-teal-500 rounded-md cursor-pointer hover:bg-teal-100 transition duration-300 ease-in-out`}
+            htmlFor="file-input"
+            className="px-6 py-4 border-2 border-dashed border-teal-500 rounded-md cursor-pointer hover:bg-teal-100 transition duration-300 ease-in-out"
           >
             <span className="text-teal-500 text-lg">
               Click to Upload Images
             </span>
           </label>
-
-          {uploadImgs.length > 0 && (
+          {uploadedImages.length > 0 && (
             <div className="mt-6 grid grid-cols-2 gap-4">
-              {uploadImgs.map((img, index) => (
+              {uploadedImages.map((img, index) => (
                 <div key={index} className="relative group">
                   <img
                     className="w-full h-32 object-cover rounded-md shadow-md transition-transform duration-300 group-hover:scale-105"
@@ -63,9 +62,9 @@ const UploadImage = () => {
               ))}
             </div>
           )}
-          {uploadImgs.length > 0 && (
+          {uploadedImages.length > 0 && (
             <button
-              onClick={removeHandler}
+              onClick={clearAllImages}
               className="mt-6 w-full py-2 bg-red-500 text-white rounded-md font-semibold hover:bg-red-600 transition duration-300"
             >
               Remove All Images
