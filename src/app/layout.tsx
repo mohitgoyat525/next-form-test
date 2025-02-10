@@ -15,7 +15,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Form",
   description: "Next Test",
-  
+  openGraph: {
+    title: "Form",
+    description: "Next Test",
+    images: [
+      {
+        url: "/meta-img.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
