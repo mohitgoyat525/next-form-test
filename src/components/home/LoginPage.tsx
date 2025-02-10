@@ -52,8 +52,8 @@ export const Login = () => {
             <Image
               src="/assets/images/png/page-logo.png"
               alt="logo"
-              width={121}
-              height={24}
+              width={163}
+              height={31}
             />
           </Link>
           <div className="pt-[138px] max-lg:pt-[90px]">
@@ -104,8 +104,8 @@ export const Login = () => {
                   setFormData({ ...formData, password: e.target.value })
                 }
                 className="w-full p-[19px_14px] shadow-[0_1px_2px_0_#1018280D] mt-1.5 placeholder:text-gray placeholder:text-sm placeholder:leading-6 border border-solid border-gray-light rounded-lg outline-none"
-                placeholder="••••••••"
                 type="password"
+                placeholder="Password"
                 id="password"
               />
               <span className="flex justify-between mt-[18px] max-sm:flex-col">
@@ -121,7 +121,7 @@ export const Login = () => {
                   />
                   <label
                     htmlFor="check"
-                    className="font-inter leading-6 text-gray-dark"
+                    className="font-inter leading-6 text-gray-dark cursor-pointer"
                   >
                     Remember for 30 days
                   </label>
@@ -135,11 +135,11 @@ export const Login = () => {
               </span>
               <button
                 type="submit"
-                className="w-full pt-[9px] bg-black-light pb-2.5 font-medium leading-6 text-sm text-white mt-6 rounded-[9px]"
+                className="w-full pt-[9px] bg-black-light pb-2.5 font-medium leading-6 text-sm text-white mt-6 rounded-[9px] transition-all ease-linear duration-300 hover:bg-white hover:text-black border border-solid border-transparent hover:border-black"
               >
                 Sign In
               </button>
-              <button className="w-full pt-[9px] gap-2.5 pb-2.5 font-medium leading-6 text-sm text-black-light flex mt-1.5 rounded-[9px] justify-center items-center border border-solid border-gray-light">
+              <button className="w-full pt-[9px] gap-2.5 pb-2.5 font-medium leading-6 text-sm text-black-light flex mt-1.5 rounded-[9px] justify-center items-center border border-solid border-gray-light transition-all ease-linear duration-300 hover:bg-black hover:text-white">
                 <Image
                   src={"/assets/images/png/google-logo.png"}
                   alt="google logo"
@@ -157,12 +157,6 @@ export const Login = () => {
                 </Link>
               </span>
             </form>
-            <p className="text-center text-base pt-[18px] text-medium-gray leading-6 max-md:text-start">
-              Don’t have an account?
-              <Link href="#" className="pl-2.5 text-blue-500 font-inter">
-                Sign up
-              </Link>
-            </p>
           </div>
         </div>
         <div className="w-6/12 max-xl:hidden max-w-[759px] bg-blue-light min-h-[899px] flex items-center justify-center rounded-[20px]">

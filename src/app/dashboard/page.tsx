@@ -1,8 +1,12 @@
 import Dashboard from "@/components/dashboard/Dashboard";
-import React from "react";
+import React, { Suspense } from "react";
 
 const page = () => {
-  return <Dashboard />;
+  return (
+    <Suspense>
+      <Dashboard />
+    </Suspense>
+  );
 };
 
 export default page;

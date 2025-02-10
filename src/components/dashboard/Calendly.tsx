@@ -20,7 +20,7 @@ const Calenderly = () => {
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <h2 className="text-3xl font-bold text-gray-800 mb-4">Calenderly</h2>
       <div
-        className="calendly-inline-widget w-full sm:w-[500px] h-[650px] border rounded-lg shadow-lg"
+        className="calendly-inline-widget w-full sm:w-[500px] h-[650px] border rounded-lg shadow-lg max-lg:max-w-2xl"
         data-url="https://calendly.com/montyits71/new-meeting?text_color=ffffff&primary_color=140202"
       ></div>
     </div>

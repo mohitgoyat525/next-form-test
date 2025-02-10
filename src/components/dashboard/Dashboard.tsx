@@ -1,22 +1,16 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState, Suspense } from "react";
-import ImageUpload from "../dashboard/ImgUpload";
+import React, { useEffect, useState } from "react";
+import ImageUpload from "./ImgUpload";
 import { DASHBOARD_BUTTON_LIST } from "../../utils/Helper";
 import Link from "next/link";
-import Calenderly from "./Calendly";
+import Calendly from "./Calendly";
 import Value from "./Value";
 
 const Dashboard = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  const [page, setPage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const pageParam = searchParams.get("page");
-    setPage(pageParam);
-  }, [searchParams]);
+  const page = searchParams.get("page");
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -30,31 +24,26 @@ const Dashboard = () => {
     }
   }, [router]);
 
-  const [open, setOpen] = useState(0);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const handleButtonClick = (index: any) => {
-    setOpen(open === index ? false : index);
-  };
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  const handleOpen = () => {
+    setOpen(!open);
   };
 
   return (
-    <div className="flex min-h-screen w-full">
+    <div className="flex min-h-screen w-full md:pl-[300px] relative">
       <div
-        className={`${
-          isSidebarOpen ? "block" : "hidden"
-        } md:flex flex-col py-10 px-5 bg-black text-white w-[300px] fixed top-0 left-0 min-h-screen justify-between transition-all duration-300 ease-in-out`}
+        className={`flex flex-col py-10 px-5 bg-black z-10 text-white w-[300px] fixed top-0 left-0 min-h-screen justify-between max-md:w-full transition-all duration-300 ${
+          open === true ? "max-md:left-0" : "max-md:-left-full"
+        }`}
       >
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 relative">
           <h1 className="mb-3 text-center text-4xl font-semibold">Dashboard</h1>
           {DASHBOARD_BUTTON_LIST.map((item, index) => (
             <Link
               href={`/dashboard?page=${item.toLowerCase().replace(" ", "-")}`}
-              onClick={() => handleButtonClick(index)}
               key={index}
+              onClick={() => setOpen(false)}
               className={`${
                 page === item.toLowerCase().replace(" ", "-") &&
                 "bg-white text-black"
@@ -71,25 +60,36 @@ const Dashboard = () => {
           Logout
         </button>
       </div>
-
-      {/* Main Content */}
-      <div className="flex-1 pl-5 max-md:pl-0 md:pl-[300px] pt-20">
-        <div className="bg-yellow-500 min-h-20 py-5 px-3 w-full fixed top-0 left-0 md:left-[300px]">
-          <h1 className="text-white font-semibold font-inter text-3xl">
+      <div className="w-full pt-20">
+        <div className="bg-purple-700 z-50 max-md:flex max-md:items-center max-md:gap-5 min-h-20 py-5 px-3 w-full fixed top-0">
+          <button
+            onClick={handleOpen}
+            className="md:hidden max-md:size-6 relative !z-50 max-md:flex max-md:justify-between max-md:flex-col overflow-hidden"
+          >
+            <span
+              className={`flex w-6 h-0.5 transition-all duration-300 bg-white ${
+                open === true ? "translate-x-10" : ""
+              }`}
+            ></span>
+            <span
+              className={`flex w-6 h-0.5 transition-all duration-300 relative bg-white after:absolute after:w-full after:h-full after:bg-white after:left-0 after:top-0 after:transition-all after:duration-300 ${
+                open === true ? "rotate-45 after:rotate-90" : ""
+              }`}
+            ></span>
+            <span
+              className={`flex w-6 h-0.5 transition-all duration-300 bg-white ${
+                open === true ? "-translate-x-10" : ""
+              }`}
+            ></span>
+          </button>
+          <h1 className="text-white font-semibold font-inter text-3xl max-md:text-2xl">
             Welcome to Dashboard
           </h1>
-          <button
-            onClick={toggleSidebar}
-            className="md:hidden text-white absolute top-6 left-6 p-2 bg-black rounded-md z-[60]"
-          >
-            {isSidebarOpen ? "Close" : "Open"} Sidebar
-          </button>
         </div>
-
         {page === "values" ? (
-         <Value/>
+          <Value />
         ) : page === "calenderly" ? (
-          <Calenderly />
+          <Calendly />
         ) : page === "images" ? (
           <ImageUpload />
         ) : null}
@@ -98,11 +98,4 @@ const Dashboard = () => {
   );
 };
 
-// Wrapping the Dashboard in Suspense to handle client-side rendering issues
-export default function SuspenseDashboard() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Dashboard />
-    </Suspense>
-  );
-}
+export default Dashboard;
