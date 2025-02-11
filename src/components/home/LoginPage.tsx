@@ -57,7 +57,7 @@ export const Login = () => {
               className=" absolute top-0 "
             />
           </Link>
-          <div className="pt-[138px] max-lg:pt-[90px]">
+          <div className="pt-[0px] max-xl:pt-[90px]">
             <h1 className="text-3xl font-semibold leading-[58px] text-dark tracking-[1.22px]">
               Welcome Back
             </h1>
