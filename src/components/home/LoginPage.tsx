@@ -46,7 +46,7 @@ export const Login = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center py-[30px] pr-7 max-lg:pt-8 max-lg:pb-24 max-lg:px-9">
-      <div className="flex w-full justify-end items-center gap-[120px] max-xl:justify-center 2xl:justify-center">
+      <div className="flex w-full justify-end items-center gap-[120px] max-xl:justify-center 2xl:justify-center relative">
         <div className="min-w-[456px] max-sm:min-w-[320px] flex justify-end flex-col max-lg:max-w-[320px] max-lg:mx-auto">
           <Link href="#">
             <Image
@@ -54,26 +54,27 @@ export const Login = () => {
               alt="logo"
               width={163}
               height={31}
+              className=" absolute top-0 "
             />
           </Link>
           <div className="pt-[138px] max-lg:pt-[90px]">
-            <h1 className="text-3xl font-semibold leading-[58px] text-light-black tracking-[1.22px]">
+            <h1 className="text-3xl font-semibold leading-[58px] text-dark tracking-[1.22px]">
               Welcome Back
             </h1>
-            <p className="text-sm font-normal leading-[30px] text-light-gray pl-0.5">
+            <p className="text-sm font-normal leading-[30px] text-gray pl-0.5">
               Welcome back! Please enter your details.
             </p>
             <form onSubmit={formHandler} className="w-full ">
               <label
                 htmlFor="email"
-                className=" font-medium leading-5 text-black-light"
+                className=" font-medium leading-5 !text-black-light"
               >
                 {error ? (
                   <p className="!text-red-900 text-sm font-bold leading-[30px]">
                     Enter Your Email
                   </p>
                 ) : (
-                  <p className="text-gray text-sm leading-[30px]">Email</p>
+                  <p className="text-black-light text-base leading-[30px]">Email</p>
                 )}
               </label>
               <input
@@ -95,7 +96,7 @@ export const Login = () => {
                     {passwordError || "Enter Your Password"}
                   </p>
                 ) : (
-                  <p className="text-gray text-sm leading-[30px]">Password</p>
+                  <p className="text-black-light text-base leading-[30px]">Password</p>
                 )}
               </label>
               <input
@@ -159,7 +160,7 @@ export const Login = () => {
             </form>
           </div>
         </div>
-        <div className="w-6/12 max-xl:hidden max-w-[759px] bg-blue-light min-h-[899px] flex items-center justify-center rounded-[20px]">
+        <div className="w-6/12 max-xl:hidden max-w-[759px] bg-blue min-h-[899px] flex items-center justify-center rounded-[20px]">
           <Image
             width={617}
             height={541}

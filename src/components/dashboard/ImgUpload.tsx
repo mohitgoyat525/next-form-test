@@ -16,10 +16,6 @@ const UploadImage = () => {
     const fileInput = document.getElementById("file-input") as HTMLInputElement;
     if (fileInput) fileInput.value = "";
   };
-  const removeImage = (index: number) => {
-    setUploadedImages((prevImages) => prevImages.filter((_, i) => i !== index));
-  };
-
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-teal-400 to-purple-500 p-5">
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-lg">
@@ -52,12 +48,6 @@ const UploadImage = () => {
                     src={img}
                     alt="Uploaded image"
                   />
-                  <button
-                    onClick={() => removeImage(index)}
-                    className="absolute top-0 right-0 bg-red-500 min-w-[20px] text-white px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  >
-                    X
-                  </button>
                 </div>
               ))}
             </div>
