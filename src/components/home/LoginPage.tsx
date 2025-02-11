@@ -26,7 +26,7 @@ export const Login = () => {
     e.preventDefault();
     setError(true);
     if (
-      formData.email !== "" &&
+      formData.email.includes("@") &&
       formData.password.length >= 6 &&
       !passwordError
     ) {
@@ -67,12 +67,12 @@ export const Login = () => {
                 htmlFor="email"
                 className=" font-medium leading-5 !text-black-light"
               >
-                {error ? (
-                  <p className="!text-red-900 text-sm font-bold leading-6">
-                   Please Enter Your Email
+                {error && formData.email.includes("@") === false ? (
+                  <p className="text-red-900 leading-[30px]">
+                    Email is required & must be a valid email
                   </p>
                 ) : (
-                  <p className="text-black-light text-base leading-5 font-medium">Email</p>
+                  <p className="text-black-light leading-[30px]">Email</p>
                 )}
               </label>
               <input
@@ -94,7 +94,9 @@ export const Login = () => {
                     {passwordError || "Enter Your Password"}
                   </p>
                 ) : (
-                  <p className="text-black-light text-base leading-5 font-medium">Password</p>
+                  <p className="text-black-light text-base leading-5 font-medium">
+                    Password
+                  </p>
                 )}
               </label>
               <input
@@ -151,7 +153,10 @@ export const Login = () => {
                 <p className="font-inter leading-6 text-base text-gray-dark">
                   Don’t have an account?
                 </p>
-                <Link href={"/"} className="text-blue-light font-inter text-base">
+                <Link
+                  href={"/"}
+                  className="text-blue-light font-inter text-base"
+                >
                   Sign up
                 </Link>
               </span>
