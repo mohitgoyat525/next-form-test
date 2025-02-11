@@ -39,8 +39,6 @@ export const Login = () => {
       setPasswordError("");
       localStorage.setItem("isAuthenticated", "true");
       router.push("/dashboard");
-    } else if (formData.password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long");
     }
   };
 
@@ -104,7 +102,7 @@ export const Login = () => {
                 onChange={(e: any) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
-                className="w-full p-[19px_14px] shadow-[0_1px_2px_0_#1018280D] mt-1.5 placeholder:text-gray placeholder:text-sm placeholder:leading-6 border border-solid border-gray-light rounded-lg outline-none"
+                className="w-full p-[19px_14px] shadow-[0_1px_2px_0_#1018280D] mt-1.5 placeholder:text-gray placeholder:text-sm placeholder:leading-6 border font-normal placeholder:font-normal border-solid border-gray-light rounded-lg outline-none"
                 type="password"
                 placeholder="........"
                 id="password"
@@ -149,7 +147,7 @@ export const Login = () => {
                 />
                 Sign in with Google
               </button>
-              <span className="flex w-full justify-center gap-2.5 mt-[18px]">
+              <span className="flex w-full justify-center max-sm:justify-start gap-2.5 mt-[18px]">
                 <p className="font-inter leading-6 text-base text-gray-dark">
                   Don’t have an account?
                 </p>
