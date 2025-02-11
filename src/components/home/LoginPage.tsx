@@ -70,11 +70,11 @@ export const Login = () => {
                 className=" font-medium leading-5 !text-black-light"
               >
                 {error ? (
-                  <p className="!text-red-900 text-sm font-bold leading-[30px]">
-                    Enter Your Email
+                  <p className="!text-red-900 text-sm font-bold leading-6">
+                   Please Enter Your Email
                   </p>
                 ) : (
-                  <p className="text-black-light text-base leading-[30px]">Email</p>
+                  <p className="text-black-light text-base leading-5 font-medium">Email</p>
                 )}
               </label>
               <input
@@ -92,11 +92,11 @@ export const Login = () => {
                 className=" font-medium leading-5 text-black-light"
               >
                 {error || passwordError ? (
-                  <p className="!text-red-900 font-bold text-sm leading-[30px]">
+                  <p className="!text-red-900 font-bold text-sm leading-6">
                     {passwordError || "Enter Your Password"}
                   </p>
                 ) : (
-                  <p className="text-black-light text-base leading-[30px]">Password</p>
+                  <p className="text-black-light text-base leading-5 font-medium">Password</p>
                 )}
               </label>
               <input
@@ -106,7 +106,7 @@ export const Login = () => {
                 }
                 className="w-full p-[19px_14px] shadow-[0_1px_2px_0_#1018280D] mt-1.5 placeholder:text-gray placeholder:text-sm placeholder:leading-6 border border-solid border-gray-light rounded-lg outline-none"
                 type="password"
-                placeholder="Password"
+                placeholder="........"
                 id="password"
               />
               <span className="flex justify-between mt-[18px] max-sm:flex-col">
@@ -122,14 +122,14 @@ export const Login = () => {
                   />
                   <label
                     htmlFor="check"
-                    className="font-inter leading-6 text-gray-dark cursor-pointer"
+                    className="font-inter leading-6 text-gray-dark cursor-pointer text-base"
                   >
                     Remember for 30 days
                   </label>
                 </span>
                 <Link
                   href="/"
-                  className="font-inter leading-6 text-blue-light max-sm:mt-[18px]"
+                  className="font-inter leading-6 text-blue-light max-sm:mt-[18px] text-base"
                 >
                   Forgot Password
                 </Link>
@@ -150,10 +150,10 @@ export const Login = () => {
                 Sign in with Google
               </button>
               <span className="flex w-full justify-center gap-2.5 mt-[18px]">
-                <p className="font-inter leading-6 text-gray-dark">
+                <p className="font-inter leading-6 text-base text-gray-dark">
                   Don’t have an account?
                 </p>
-                <Link href={"/"} className="text-blue-light font-inter">
+                <Link href={"/"} className="text-blue-light font-inter text-base">
                   Sign up
                 </Link>
               </span>
