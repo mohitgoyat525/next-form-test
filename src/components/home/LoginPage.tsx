@@ -61,7 +61,7 @@ export const Login = () => {
             <h1 className="text-3xl font-semibold leading-[58px] text-dark tracking-[1.22px]">
               Welcome Back
             </h1>
-            <p className="text-sm font-normal leading-[30px] text-gray pl-0.5">
+            <p className="text-sm font-normal leading-[30px] text-gray pl-0.5 pb-[31px]">
               Welcome back! Please enter your details.
             </p>
             <form onSubmit={formHandler} className="w-full ">
@@ -136,11 +136,11 @@ export const Login = () => {
               </span>
               <button
                 type="submit"
-                className="w-full pt-[9px] bg-black-light pb-2.5 font-medium leading-6 text-sm text-white mt-6 rounded-[9px] transition-all ease-linear duration-300 hover:bg-white hover:text-black border border-solid border-transparent hover:border-black"
+                className="w-full h-[43px] pt-[9px] bg-black-light pb-2.5 font-medium leading-6 text-sm text-white mt-6 rounded-[9px] transition-all ease-linear duration-300 hover:bg-white hover:text-black border border-solid border-transparent hover:border-black"
               >
                 Sign In
               </button>
-              <button className="w-full pt-[9px] gap-2.5 pb-2.5 font-medium leading-6 text-sm text-black-light flex mt-1.5 rounded-[9px] justify-center items-center border border-solid border-gray-light transition-all ease-linear duration-300 hover:bg-black hover:text-white">
+              <button className="w-full h-[43px] pt-[9px] gap-2.5 pb-2.5 font-medium leading-6 text-sm text-black-light flex mt-1.5 rounded-[9px] justify-center items-center border border-solid border-gray-light transition-all ease-linear duration-300 hover:bg-black hover:text-white">
                 <Image
                   src={"/assets/images/png/google-logo.png"}
                   alt="google logo"
