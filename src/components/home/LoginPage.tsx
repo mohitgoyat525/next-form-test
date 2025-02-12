@@ -62,14 +62,14 @@ export const Login = () => {
             <p className="text-sm font-normal leading-[30px] text-gray pl-0.5 pb-[31px]">
               Welcome back! Please enter your details.
             </p>
-            <form onSubmit={formHandler} className="w-full ">
+            <form className="w-full ">
               <label
                 htmlFor="email"
                 className=" font-medium leading-5 !text-black-light"
               >
                 {error && formData.email.includes("@") === false ? (
                   <p className="text-red-900 leading-[30px]">
-                    Email is required & must be a valid email
+                    Email is required & @ is missing
                   </p>
                 ) : (
                   <p className="text-black-light leading-[30px]">Email</p>
@@ -89,14 +89,12 @@ export const Login = () => {
                 htmlFor="password"
                 className=" font-medium leading-5 text-black-light"
               >
-                {error || passwordError ? (
-                  <p className="!text-red-900 font-bold text-sm leading-6">
-                    {passwordError || "Enter Your Password"}
+                {error && formData.password.length < 6 ? (
+                  <p className="text-red-900 leading-[30px]">
+                    password is required & must be 6 characters
                   </p>
                 ) : (
-                  <p className="text-black-light text-base leading-5 font-medium">
-                    Password
-                  </p>
+                  <p className="text-black-light leading-[30px]">password</p>
                 )}
               </label>
               <input
@@ -135,7 +133,7 @@ export const Login = () => {
                 </Link>
               </span>
               <button
-                type="submit"
+                onClick={formHandler}
                 className="w-full h-[43px] pt-[9px] bg-black-light pb-2.5 font-medium leading-6 text-sm text-white mt-6 rounded-[9px] transition-all ease-linear duration-300 hover:bg-white hover:text-black border border-solid border-transparent hover:border-black"
               >
                 Sign In

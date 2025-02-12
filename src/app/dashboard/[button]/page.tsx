@@ -1,16 +1,16 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import ImageUpload from "./ImgUpload";
-import { DASHBOARD_BUTTON_LIST } from "../../utils/Helper";
 import Link from "next/link";
-import Calendly from "./Calendly";
-import Value from "./Value";
+import { DASHBOARD_BUTTON_LIST } from "@/utils/Helper";
+import Value from "@/components/dashboard/Value";
+import Calenderly from "@/components/dashboard/Calendly";
+import ImageUpload from "@/components/dashboard/ImgUpload";
 
 const Dashboard = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  const params = useParams();
+  const { button } = params;
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -41,11 +41,11 @@ const Dashboard = () => {
           <h1 className="mb-3 text-center text-4xl font-semibold">Dashboard</h1>
           {DASHBOARD_BUTTON_LIST.map((item, index) => (
             <Link
-              href={`/dashboard?page=${item.toLowerCase().replace(" ", "-")}`}
+              href={`/dashboard/${item.toLowerCase().replace(" ", "-")}`}
               key={index}
               onClick={() => setOpen(false)}
               className={`${
-                page === item.toLowerCase().replace(" ", "-") &&
+                button === item.toLowerCase().replace(" ", "-") &&
                 "bg-white text-black"
               } py-2 px-3 rounded-lg cursor-pointer hover:bg-white/50 transition-all duration-300 hover:text-black`}
             >
@@ -86,11 +86,11 @@ const Dashboard = () => {
             Welcome to Dashboard
           </h1>
         </div>
-        {page === "values" ? (
+        {button === "values" ? (
           <Value />
-        ) : page === "calenderly" ? (
-          <Calendly />
-        ) : page === "images" ? (
+        ) : button === "calenderly" ? (
+          <Calenderly />
+        ) : button === "images" ? (
           <ImageUpload />
         ) : null}
       </div>
