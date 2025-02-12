@@ -21,6 +21,9 @@ export const Login = () => {
       router.push("/dashboard");
     }
   }, [router]);
+  
+  const EmailRegex =
+    /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/;
 
   const formHandler = (e: any) => {
     e.preventDefault();
@@ -67,9 +70,14 @@ export const Login = () => {
                 htmlFor="email"
                 className=" font-medium leading-5 !text-black-light"
               >
-                {error && formData.email.includes("@") === false ? (
+                {error && formData.email.length === 0 ? (
                   <p className="text-red-900 leading-[30px]">
-                    Email is required & @ is missing
+                    Email is required
+                  </p>
+                ) : !EmailRegex.test(formData.email) &&
+                  formData.email.length > 0 ? (
+                  <p className="text-red-900 leading-[30px]">
+                    Email are not valid
                   </p>
                 ) : (
                   <p className="text-black-light leading-[30px]">Email</p>
